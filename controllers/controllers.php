@@ -3,7 +3,8 @@ require_once("models/model/PhimModel.php");
 require_once("models/model/NgayModel.php");
 require_once("models/model/ChinhNhanhModel.php");
 require_once("models/model/LichChieuModel.php");
-require_once("models//model/user_module.php");
+require_once("models/model/user_module.php");
+require_once("models/model/VeModel.php");
 
 class controller{
     public $modelphim;
@@ -15,10 +16,10 @@ class controller{
     public function inra(){
 
     #timkiem
-        if(isset($_GET['nuttimkiem'])){
-            if(isset($_GET['ndtimkiem'])){
-                if($_GET['ndtimkiem'] != ""){
-                    $this -> hienchitietphim($_GET['ndtimkiem']);
+        if(isset($_POST['nuttimkiem'])){
+            if(isset($_POST['ndtimkiem'])){
+                if($_POST['ndtimkiem'] != ""){
+                    $this -> hienchitietphim($_POST['ndtimkiem']);   
                 }
                 else{
                     $phims = $this -> modelphim -> GetListPhim();
@@ -30,8 +31,12 @@ class controller{
 }
     # lấy tất cả phim
         else if(!isset($_GET['nd'])){
-        $phims = $this -> modelphim -> GetListPhim();
-        include "view/viewtam.php";
+        #$phims = $this -> modelphim -> GetListPhim();
+        include "view/viewTrangChu.php";
+        }
+        else if($_GET['nd'] == "tc"){
+            $phims = $this -> modelphim -> GetListPhim();
+            include "view/viewtam.php";
         }
        #lấy phim đang chiếu
         else if($_GET['nd'] == 'dangchieu'){  
@@ -85,6 +90,16 @@ class controller{
         $phim = $this -> modelphim -> GetPhimByID($lichchieu -> GetIDPHIM());
         $ngay = $modelngay -> GetNgayTheoIDreal($lichchieu -> GetIDNGAY());
         include "view/thanhtoan.php";
+    }
+    else if($_GET['nd'] == "xemlichsu"){
+        $modelgiochieu = new LichChieuModel();
+        $modelngay = new NgayModel();
+        $modelchinhanh = new ChiNhanhModel();
+       $ve = GetToanBoVeTheoIDUS(GetUserTheoUserName($_GET['user']) -> GetIDUS());
+       # $ve = GetToanBoVe();
+       
+       include "view/lichsumuave.php";
+
     }
 }
     

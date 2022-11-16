@@ -22,13 +22,13 @@ class ve{
         return $this -> id_ve;
     }
     public function GetIDUS(){
-        return $this -> ghe;
+        return $this -> id_user;
     }
     public function GetIDPHIM(){
-        return $this -> ghe;
+        return $this -> id_phim;
     }
     public function GetIDLC(){
-        return $this -> ghe;
+        return $this -> id_lichchieu;
     }
     public function GetBap(){
         return $this -> soluongbap;

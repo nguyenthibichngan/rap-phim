@@ -10,6 +10,15 @@
     </head>
     <body>
         <div class="container">
+        <div class ="row">
+            <div class ="col-12 quytrinh">
+                <ul class="cac-buoc">
+                    <span class ="qt" > Chọn vé </span>
+                    <span class ="qt" > Chọn ghế</span>
+                    <span class ="qt" style="background-color: green"> Thanh Toán</span>
+                </ul>
+            </div>
+        </div>
             <form action="xulythanhtoan.php?idgc=<?php echo $_GET['idgc']?>&user=<?php echo $_GET['user']?>" method="post">
             <div class="row thanhtoan">
                 <div class="col-12 giohang ">
@@ -38,7 +47,7 @@
                 </div>                
              </div>
              <div class="col-12 btn right">
-                <input type="submit" id="thanhtoan" value="Thanh Toán">
+                <input type="submit" class ="btn btn-danger" id="thanhtoan" value="Thanh Toán">
              </div>
              </form>
         </div>

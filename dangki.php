@@ -20,14 +20,17 @@
         <div class = "card">
             <div class = "card-body">
             <div class = "title"> <h3>Đăng Ký</h3></div>
-        <form method="post" action="xulydangki.php">
+        <form method="post" action="btMd5-20221024T063417Z-001/btMd5/xulydangki.php">
         
             <br style="clear:both;">
                 <div class="form-outline mb-4">
                     <input type="text" id="form2Example1" name="username" class="form-control" value="<?php echo isset($_GET['username'])?$_GET['username']:"";?>" />
                     <label class="form-label" for="form2Example1">Tài Khoản</label>
                 </div> 
-          
+                <div class="form-outline mb-4">
+                        <input type="text" id="form2Example1" name="hoten" class="form-control" />
+                        <label class="form-label" for="form2Example1"> Họ Tên</label>
+                </div>
                 <div class="form-outline mb-4">
                     <input type="password" id="form2Example1" name="password" class="form-control" />
                     <label class="form-label" for="form2Example1">Mật Khẩu</label>
@@ -37,21 +40,15 @@
                         <label class="form-label" for="form2Example1"> Nhập Lại Mật Khẩu</label>
                 </div>
                 <div class="form-outline mb-4">
+                        <input type="text" id="form2Example1" name="sdt" class="form-control" />
+                        <label class="form-label" for="form2Example1"> Số Điện Thoại</label>
+                </div>
+                <div class="form-outline mb-4">
                         <input type="email" id="form2Example1" name="email" class="form-control" value="<?php echo isset($_GET['email'])?$_GET['email']:"";?>"/>
                         <label class="form-label" for="form2Example1"> Email</label>
                 </div>
-             
-            <div class="img_row frm_row">
-                <img src="captcha.php" width="300px" height="50px"><br style="clear:both;"/>
-            </div>
-            <br style="clear:both;"/>
-            <div class="form-outline mb-4">
-                <!--img scr="captcha.php" width="100px"-->
-                <input type="text" id="form2Example1" name="captcha" class="form-control" />
-                <label class="form-label" for="form2Example1"> Nhập Captcha</label>
-            </div><br style="clear:both;"/>
             <div class="img_row">
-                <input type="submit" class="btn btn-dark btn-block mb-4" value="Đăng Nhập">
+                <input type="submit" class="btn btn-dark btn-block mb-4" value="Đăng Ký">
                 <input type="reset" class="btn btn-primary btn-block mb-4" value="Reset"/>
                 
             </div><br style="clear:both;"/>

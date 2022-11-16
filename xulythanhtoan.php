@@ -22,11 +22,11 @@ $thanhtien = $_POST['thanhtien'];
 $kq = AddNewVe($idve,$iduser,$idphim,$idlc,$ghes,$slve,$slbap,$slnuoc,$thanhtien);
 if($kq){
     echo "<script type='text/javascript'>alert('Thanh Toán Thành Công');</script>";
-    header("Location: maintam.php?nd=&user=".$_GET['user']."");
+    header("Location: maintam.php?nd=tc&user=".$_GET['user']."&kq=tc");
 
 }
 else{
     echo "<script type='text/javascript'>alert('Thanh Toán Thất bại');</script>";
-    header("Location: maintam.php?nd=&user=".$_GET['user']."");
+    header("Location: maintam.php?nd=tc&user=".$_GET['user']."&kq=tb");
 }
 ?>

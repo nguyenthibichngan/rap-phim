@@ -11,13 +11,21 @@
 </head>
 <body>
     <?php
+       if(isset($_GET['kq'])){
+        if($_GET['kq'] == "tc"){
+            echo "<script type='text/javascript'>alert('Thanh Toán Thành Công');</script>";
+        }
+        else{
+            echo "<script type='text/javascript'>alert('Thanh Toán Thất Bại');</script>";
+        }
+      }
     if(isset($_GET['tt']))
         echo "<div id = 'title-phimdangchieu'><h1>".$_GET['tt']."</h1></div>";
         else
         echo "<div id = 'title-phimdangchieu'><h1>Tất Cả Phim</h1></div>";
         foreach($phims as $phim){
             echo "
-            <div class = 'row' style ='float:left; padding-top:10px'>
+            <div class = 'row tatca' style ='float:left; padding-top:10px'>
                 <div class = 'col-lg-12'>";
               echo"              <div class='card'>
                                     <div class='image-wrapper'>

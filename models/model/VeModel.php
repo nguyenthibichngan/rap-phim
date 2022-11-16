@@ -26,4 +26,14 @@ require_once("models/classes/ve.php");
         giaiPhongBoNho($link,$re);
         return $data;
     }
+    function GetToanBoVeTheoIDUS($idus){
+        $toanbo = GetToanBoVe();
+        $data = array();
+        foreach($toanbo as $phim){
+            if(trim($phim -> GetIDUS()) == trim($idus)){
+                array_push($data,$phim);
+            }           
+        } 
+        return $data;
+    }
 ?>

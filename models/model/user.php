@@ -6,8 +6,6 @@ class user{
     private $matkhau;
     private $sdt;
     private $email;  
-   
-    private $so = 0;
 
 
     public function SetTenUS($tenuser){

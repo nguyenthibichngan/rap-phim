@@ -88,6 +88,7 @@ input[type=submit] {
                     </a>
                     <div class="dropdown-menu">
                       <a class="dropdown-item" href="maintam.php?user=<?php echo $_GET['user']?>&nd=xemttuser">Xem Thông Tin</a>
+                      <a class="dropdown-item" href="maintam.php?user=<?php echo $_GET['user']?>&nd=xemlichsu">Lịch Sử Mua Vé</a>
                       <a class="dropdown-item" href="btMd5-20221024T063417Z-001/btMd5/xulydangxuat.php">Đăng Xuất </a>
                     </div>
             </div>
@@ -107,11 +108,11 @@ input[type=submit] {
                   </li>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="maintam.php?user=<?php echo $_GET['user']?>">Tất Cả Phim</a>                 
+                  <a class="nav-link" href="maintam.php?nd=tc&user=<?php echo $_GET['user']?>">Tất Cả Phim</a>                 
                 </li>
                 
               </ul>
-              <form   class="form-inline my-2 my-lg-0" method="get">
+              <form   class="form-inline my-2 my-lg-0" method="post" >
                 <input  class="form-control mr-sm-2" type="text" id = "auto" name="ndtimkiem" placeholder="Search" aria-label="Search">
                 <input class="btn btn-outline-success my-2 my-sm-0" type="submit" name="nuttimkiem" value="Search">
               </form> 

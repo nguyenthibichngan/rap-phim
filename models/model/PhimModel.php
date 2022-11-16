@@ -7,7 +7,6 @@ class PhimModel{
         $link = null;
         taoKetNoi($link);
         $re = chayTruyVanTraVeDL($link, "select * from tbl_movie");
-
         $data = array();
         while ($rows = mysqli_fetch_assoc($re)){
             

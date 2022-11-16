@@ -11,12 +11,14 @@
 </head>
 <body>
     <?php 
-        if($_GET['nd'] == "themthanhcong"){
-            echo "<div style = 'background-color:teal;'>Sửa Thành Công</div>";
+      if(isset($_GET['kq'])){
+        if($_GET['kq'] == "tc"){
+            echo "<script type='text/javascript'>alert('Đổi Thông Tin Thành Công');</script>";
         }
         else{
-            echo "<div style = 'background-color:teal;'>Sửa Thất Bại</div>";
+            echo "<script type='text/javascript'>alert('Đổi Thông Tin Thất Bại');</script>";
         }
+      }
     ?>
         <div class = "row"> 
             <div class = "col-12">
@@ -24,26 +26,26 @@
                     <div class ="card-body">
                          <div class = "title"> <h3>Thông Tin User</h3></div>
                        <!--  btMd5-20221024T063417Z-001/btMd5/xulydoithongtin.php -->
-        <form method="post" action=" btMd5-20221024T063417Z-001/btMd5/xulydoithongtin.php">
+        <form method="post" action="btMd5-20221024T063417Z-001/btMd5/xulydoithongtin.php">
             <br style="clear:both;">
              <div class="form-outline mb-4">
-                <input type="text" id="HoTen" name="hoten" class="form-control" value="<?php echo $user -> GetTenUS() ?>"  />
+                <input type="text" id="HoTen" name="hoten" class="form-control" value="<?php echo $user -> GetTenUS() ?>" readonly  />
                 <?php $user -> GetTenUS() ?>
                 <label class="form-label" for="HoTen">Họ Tên</label>
             </div> 
 
             <div class="form-outline mb-4">
-                <input type="text" id="TaiKhoan" name="taikhoan" class="form-control" value="<?php echo $user -> GetTaiKhoan() ?>" />
+                <input type="text" id="TaiKhoan" name="taikhoan" class="form-control" value="<?php echo $user -> GetTaiKhoan() ?>"readonly />
                 <label class="form-label" for="TaiKhoan">Tài Khoản</label>
             </div>
          
             <div class="form-outline mb-4">
-                <input type="text" id="sodienthoai" name="sdt" class="form-control" value="<?php echo $user -> GetSDT() ?>" />
+                <input type="text" id="sodienthoai" name="sdt" class="form-control" value="<?php echo $user -> GetSDT() ?>"readonly />
                 <label class="form-label" for="sodienthoai">Số Điện Thoại</label>
             </div>
 
             <div class="form-outline mb-4">
-                <input type="email" id="Email" name="email" class="form-control" value="<?php echo $user -> GetEmail() ?>" />
+                <input type="email" id="Email" name="email" class="form-control" value="<?php echo $user -> GetEmail() ?>" readonly/>
                 <label class="form-label" for="Email">Email</label>
             </div>
 
@@ -66,7 +68,7 @@
                             continue;
                         }
                         else{
-                            a[i].disabled = false;
+                            a[i].removeAttribute('readonly');
                         }
                       
                     }

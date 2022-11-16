@@ -8,13 +8,14 @@ require_once("../../ketnoidulieu/db_module.php");
     $uss = GetUserTheoUserName($taikhoan);
     $id = $uss -> GetIDUS();
     $mk = $uss -> GetMatKhau();
-    $us = new user($id,$hoten,$taikhoan,$mk,$sdt,$email);
-    $kq = AddNewUS($us);
+   # $us = new user($id,$hoten,$taikhoan,$mk,$sdt,$email);
+    $kq = AddNewUS($id,$hoten,$taikhoan,$mk,$sdt,$email);
     if($kq){
-        header("Location: ../../maintam.php?user=".$taikhoan."&nd=xemttuser&nd=themthanhcong");
+
+        header("Location: ../../maintam.php?user=".$taikhoan."&nd=xemttuser&kq=tc");
     }
     else{
-        header("Location: ../../maintam.php?user=".$taikhoan."&nd=xemttuser&nd=themthatbai");
+        header("Location: ../../maintam.php?user=".$taikhoan."&nd=xemttuser&kq=tb");
     }
     
 

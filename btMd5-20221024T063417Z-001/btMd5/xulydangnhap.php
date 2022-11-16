@@ -7,7 +7,7 @@
             taoKetNoi($link);
             if(dangNhap($link, $_POST['username'], $_POST['password'])){
                 giaiPhongBoNho($link, true);
-                header("Location: ../../maintam.php?user=".$_POST['username'].""); //Phan biet khach or ad
+                header("Location: ../../maintam.php?&user=".$_POST['username'].""); //Phan biet khach or ad
             } else {
                 giaiPhongBoNho($link, true);
                 header("Location: dangnhap.php?msg=login-fail");

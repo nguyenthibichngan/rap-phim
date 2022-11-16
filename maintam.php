@@ -19,6 +19,21 @@
     ?>
     <div class = "container" >
         <?php 
+       
+           if(!isset($_GET['nd'])){
+            echo"
+            <div class  = 'row'>
+            <div class = 'col-12'>
+                <div class = 'header'>
+                                  
+                        ".$contrl -> inranavbar()."
+                    
+                </div>
+            </div>
+        </div>
+            ";
+           }
+           else{
             if($_GET['nd'] != "chonve" && $_GET['nd'] != "chonghe" && $_GET['nd'] != "thanhtoan" ){
                 echo"
                 <div class  = 'row'>
@@ -32,6 +47,8 @@
             </div>
                 ";
             }
+           }
+          
         ?>
         <div class = "row">
             <div class="col-12">
@@ -44,21 +61,40 @@
         </div>
         
       <?php 
-        if($_GET['nd'] != "chonve" && $_GET['nd'] != "chonghe" && $_GET['nd'] != "thanhtoan"){
-            echo"
-            <div class  = 'row text-center padding' >
-            <div class = 'col-12'>
-                <div class ='footer' >
-                   
-                     ".$contrl -> inrafooter()."
-                   
+        
+            if(!isset($_GET['nd'])){
+                echo"
+                <div class  = 'row text-center padding' >
+                <div class = 'col-12'>
+                    <div class ='footer' >
+                       
+                         ".$contrl -> inrafooter()."
+                       
+                    </div>
                 </div>
             </div>
-        </div>
-        <br style='clear:both;'>
-        </div>
-            ";
-        }
+            <br style='clear:both;'>
+            </div>
+                ";
+            }
+            else{
+                if($_GET['nd'] != "chonve" && $_GET['nd'] != "chonghe" && $_GET['nd'] != "thanhtoan"){
+                    echo"
+                    <div class  = 'row text-center padding' >
+                    <div class = 'col-12'>
+                        <div class ='footer' >
+                           
+                             ".$contrl -> inrafooter()."
+                           
+                        </div>
+                    </div>
+                </div>
+                <br style='clear:both;'>
+                </div>
+                    ";
+                }
+            }
+        
       ?>
     
 </body>

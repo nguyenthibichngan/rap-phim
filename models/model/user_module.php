@@ -2,11 +2,12 @@
 session_start();
    # require_once ("db_module.php");
    require_once("user.php");
-    function dangKi($link, $idUser, $username, $password, $email){
-        chayTruyVanKhongTraVeDL($link, "INSERT INTO tbl_user
-            VALUE('".$idUser."', 'Phạm Lê Phương Trinh',
+    function dangKi($link, $idUser,$hoten,$sdt, $username, $password, $email){
+        $re = chayTruyVanKhongTraVeDL($link, "INSERT INTO tbl_user
+            VALUES('".$idUser."', '".$hoten."',
             '".mysqli_real_escape_string($link,$username)."', 
-            '".md5($password)."', 123, '".$email."', 0, 0)");
+            '".md5($password)."','".$sdt."', '".$email."');");
+            return $re;
     }
 
     function dangNhap($link, $username, $password){ //username nhap vao ko dc chua ki tu dac biet
@@ -56,16 +57,18 @@ session_start();
         }
         else return false;
     }
-    function AddNewUS($user){
+    function AddNewUS($id,$hoten,$taikhoan,$mk,$sdt,$email){
         $link = null;
         taoKetNoi($link);
         $re = chayTruyVanKhongTraVeDL( $link, "UPDATE tbl_user
-                SET tenuser = ".$user -> GetTenUS()." taikhoan = ".$user -> GetTaiKhoan()." sdt = ".$user -> GetSDT()." email = ".$user -> GetEmail()."");
+                SET tenuser = '".$hoten."', taikhoan = '".$taikhoan."', sdt = '".$sdt."', email = '".$email."'
+                 WHERE id_user = '".$id."';
+                ");
         if($re){
             return true;
         }
         else{
-            return false;
+            return false;   
         };
     }
 

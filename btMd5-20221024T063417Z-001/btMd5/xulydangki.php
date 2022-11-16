@@ -1,29 +1,38 @@
 <?php
-session_start();
+#session_start();
     require_once ("db_module.php");
     require_once ("validate_module.php");
     require_once ("../../models/model/user_module.php");
 
     $link =NULL;
     taoKetNoi($link);
-    if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['repass']) && isset($_POST['captcha'])){
+    if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['repass'])){
         $valid = ($_POST['password'] == $_POST['repass']);
         $valid = $valid && validateLenUp($_POST['username']) && validateLenUp($_POST['repass']);
         $valid = $valid && validateEmail($_POST['email']);
-        $valid = $valid && ($_SESSION['captcha'] == $_POST['captcha']);
+        
+     #   $valid = $valid && ($_SESSION['captcha'] == $_POST['captcha']);
         if($valid){
             if(existName($link, $_POST['username'])){
                 giaiPhongBoNho($link, true);
-                header("Location: dangki.php?msg=duplicate&username=".$_POST['username']."&email=".$_POST['email']);
+                header("Location: ../../dangki.php?msg=duplicate&username=".$_POST['username']."&email=".$_POST['email']);
             } else {
-///HARD CODE
-                dangKi($link, 'KH05', $_POST['username'], $_POST['password'], $_POST['email']);
+                $va = count(GetListUser()) + 1;
+                $ff = str_pad($va, 3, '0', STR_PAD_LEFT);
+                $idve = "KH".$ff;
+                $kq = dangKi($link,$idve,$_POST['hoten'],$_POST['sdt'] ,$_POST['username'], $_POST['password'], $_POST['email']);
                 giaiPhongBoNho($link, true);
-                header("Location: dangki.php?msg=done");
+                if($kq){
+                    header("Location: ../../dangki.php?msg=done");
+                }
+                else{
+                    header("Location: ../../dangki.php");
+                }
+                
             }
         } else {
             giaiPhongBoNho($link, true);
-            header("Location: dangki.php?msg=unvalid-data&username=".$_POST['username']."&email=".$_POST['email']);   
+            header("Location: ../../dangki.php?msg=unvalid-data&username=".$_POST['username']."&email=".$_POST['email']);   
         }
     }
     /*{

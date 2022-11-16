@@ -4,13 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel ="stylesheet" href="../css/hangghe.css">
+    <link rel ="stylesheet" href="css/hangghemoi.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
     <div class ="container">
-        <div class ="row phancach">
+        <div class ="row">
+            <div class ="col-12 quytrinh">
+                <ul class="cac-buoc">
+                    <span class ="qt" > Chọn vé </span>
+                    <span class ="qt" style="background-color: green"> Chọn ghế</span>
+                    <span class ="qt"> Thanh Toán</span>
+                </ul>
+            </div>
         </div>
         <div class ="row thongtin-giohang">
             <div class="col-8 info-phim">
@@ -25,13 +32,6 @@
                     </p>    
                 </div>
 
-            </div>
-            <div class = "col-4 giohang">
-                <h3 style="text-align:center;"> GIỎ HÀNG CỦA BẠN </h3>
-                <hr>
-                <ul class = "item-giohang">
-                    
-                </ul>
             </div>
         </div>
         <div class ="row phancach">
@@ -485,8 +485,13 @@
                         </div>
                     </div>
                     <br/>
+                    <div class = "col-xs-2">
+                        <input type="text" id ="ttmaghe" class="form-control" value ="" disabled>
+                    </div>
                     <div class ="nut-ghe">
-                        <button class = "btn btn-danger nut-dat-ghe">ĐẶT GHẾ</button>
+                        <input type = "button" class = "btn btn-danger nut-dat-xn" onclick="ChonLai()" value="Chọn Lại">
+                        <input type = "button" class = "btn btn-danger nut-dat-xn"onclick="XacNhanChon()" value="Xác Nhận Chọn">
+                        <button class = "btn btn-danger nut-dat-ghe">ĐẶT GHẾ</button>                        
                     </div>
                 </div> 
             </div>
@@ -502,6 +507,7 @@
             if(mau == "none"){
                 divcha.style.backgroundColor = "red";
                 mau = "red";
+
                 
             }
             else{
@@ -510,6 +516,24 @@
             }
             
         })
+     }
+     function ChonLai(){
+        for(let i = 0; i < ghe.length; i++){
+           if( ghe[i].parentElement.style.backgroundColor == "red"){
+            ghe[i].parentElement.style.backgroundColor = "gray"
+           }
+        }
+        document.getElementById('ttmaghe').value = "";
+     }
+     function XacNhanChon(){
+        var t  = "";
+        for(let i = 0; i < ghe.length; i++){
+           if( ghe[i].parentElement.style.backgroundColor == "red"){
+                t += ghe[i].getAttribute('id') + "/";
+           }
+        }
+
+        document.getElementById('ttmaghe').value = t.substring(0,t.length - 1)
      }
 
      
